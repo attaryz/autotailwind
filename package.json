@@ -1,0 +1,30 @@
+{
+  "name": "tailwind_cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "autotail": "./dist/index.js"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc",
+    "dev": "npx ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "build:i": "yarn build && npm i -g . && autotail"
+  },
+  "keywords": [],
+  "author": "Abdullah Ali",
+  "license": "ISC",
+  "dependencies": {
+    "@types/figlet": "^1.5.6",
+    "@types/inquirer": "^9.0.3",
+    "commander": "^11.0.0",
+    "figlet": "^1.6.0",
+    "inquirer": "^9.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "typescript": "^5.1.6"
+  }
+}
