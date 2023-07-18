@@ -1,4 +1,4 @@
-[![build](https://github.com/attaryz/autotailwind/actions/workflows/publich.yaml/badge.svg)](https://github.com/attaryz/autotailwind/actions/workflows/publish.yml)
+[![build](https://github.com/attaryz/autotailwind/actions/workflows/publish.yaml/badge.svg)](https://github.com/attaryz/autotailwind/actions/workflows/publish.yml)
 
 # Autotail
 
