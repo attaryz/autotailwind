@@ -2,6 +2,10 @@
   "name": "tailwind_cli",
   "version": "1.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/attaryz/autotailwind.git"
+  },
   "main": "dist/src/index.js",
   "bin": {
     "autotail": "./dist/src/index.js"
