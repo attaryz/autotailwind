@@ -3,6 +3,7 @@
 import fs from "fs"
 import path from "path"
 export default function existing_project(answers: any) {
+  console.log(answers)
   fs.writeFileSync(
     path.join(
       answers.path,
@@ -10,10 +11,10 @@ export default function existing_project(answers: any) {
     ),
     `module.exports = {
     purge: [${
-      answers.language === "js"
+      answers.language === "JavaScript"
         ? "'./src/**/*.html, ./src/**/*.js, ./src/**/*.jsx'"
         : "'./src/**/*.html, ./src/**/*.js, ./src/**/*.jsx, ./src/**/*.ts, ./src/**/*.tsx'"
-    } ],
+    }],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {},

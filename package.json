@@ -2,14 +2,14 @@
   "name": "tailwind_cli",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "bin": {
-    "autotail": "./dist/index.js"
+    "autotail": "./dist/src/index.js"
   },
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
+    "start": "node --experimental-specifier-resolution=node dist/src/index.js",
     "build:i": "yarn build && npm i -g . && autotail"
   },
   "keywords": [],

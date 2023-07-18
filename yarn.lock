@@ -474,7 +474,7 @@ __metadata:
     inquirer: ^9.2.8
     typescript: ^5.1.6
   bin:
-    autotail: ./dist/index.js
+    autotail: ./dist/src/index.js
   languageName: unknown
   linkType: soft
 

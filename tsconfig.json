@@ -1,26 +1,3 @@
-// {
-//   "compilerOptions": {
-//     "rootDir": "src",
-//     "outDir": "dist",
-//     "strict": true,
-//     "module": "es6",
-//     "target": "es5",
-//     // "target": "ESNext",
-//     // "module": "CommonJS",
-//     "sourceMap": true,
-//     "esModuleInterop": true,
-//     "moduleResolution": "node",
-//     // "allowImportingTsExtensions": true,
-//     // "noEmit": true,
-//     "baseUrl": "./src",
-//     "removeComments": true
-//     // "paths": {
-//     //   "@/*": ["*"]
-//     // }
-//     // "lib": ["ES2015.Core"]
-//   }
-// }
-
 {
   "include": ["src/**/*", "package.json"],
   "compilerOptions": {
