@@ -2,18 +2,18 @@
 
 import fs from "fs"
 import path from "path"
-
-export default function new_project(answers: any) {
-  const dir = path.join(answers.path, answers.name)
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir)
-  }
-  fs.writeFileSync(path.join(dir, "index.html"), "")
-
+export default function existing_project(answers: any) {
   fs.writeFileSync(
-    path.join(dir, "tailwind.config.js"),
+    path.join(
+      answers.path,
+      `tailwind.config.${answers.language === "TypeScript" ? "ts" : "js"}`
+    ),
     `module.exports = {
-    purge: ["./src/**/*.html", "./src/**/*.js"],
+    purge: [${
+      answers.language === "js"
+        ? "'./src/**/*.html, ./src/**/*.js, ./src/**/*.jsx'"
+        : "'./src/**/*.html, ./src/**/*.js, ./src/**/*.jsx, ./src/**/*.ts, ./src/**/*.tsx'"
+    } ],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {},
@@ -22,10 +22,14 @@ export default function new_project(answers: any) {
         extend: {},
     },
     plugins: [],
+
 }`
   )
   fs.writeFileSync(
-    path.join(dir, "postcss.config.js"),
+    path.join(
+      answers.path,
+      `postcss.config.${answers.language === "TypeScript" ? "ts" : "js"}`
+    ),
     `module.exports = {
     plugins: {
         tailwindcss: {},
@@ -34,7 +38,14 @@ export default function new_project(answers: any) {
 }`
   )
   fs.writeFileSync(
-    path.join(dir, "package.json"),
+    path.join(answers.path, "src", "tailwind.css"),
+    `@tailwind base;
+@tailwind components;
+@tailwind utilities;`
+  )
+  fs.writeFileSync(path.join(answers.path, "src", "styles.css"), "")
+  fs.writeFileSync(
+    path.join(answers.path, "package.json"),
     `{
     "name": "${answers.name}",
     "version": "1.0.0",
@@ -53,11 +64,4 @@ export default function new_project(answers: any) {
     }
 }`
   )
-  fs.writeFileSync(
-    path.join(dir, "src", "tailwind.css"),
-    `@tailwind base;
-@tailwind components;
-@tailwind utilities;`
-  )
-  fs.writeFileSync(path.join(dir, "src", "styles.css"), "")
 }

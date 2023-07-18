@@ -1,12 +1,52 @@
+// {
+//   "compilerOptions": {
+//     "rootDir": "src",
+//     "outDir": "dist",
+//     "strict": true,
+//     "module": "es6",
+//     "target": "es5",
+//     // "target": "ESNext",
+//     // "module": "CommonJS",
+//     "sourceMap": true,
+//     "esModuleInterop": true,
+//     "moduleResolution": "node",
+//     // "allowImportingTsExtensions": true,
+//     // "noEmit": true,
+//     "baseUrl": "./src",
+//     "removeComments": true
+//     // "paths": {
+//     //   "@/*": ["*"]
+//     // }
+//     // "lib": ["ES2015.Core"]
+//   }
+// }
+
 {
+  "include": ["src/**/*", "package.json"],
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "strict": true,
-    "target": "es6",
-    "module": "ESNext",
-    "sourceMap": true,
+    "baseUrl": "./src",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
     "esModuleInterop": true,
-    "moduleResolution": "node"
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    // "module": "CommonJS",
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "outDir": "dist",
+    "paths": {
+      "@/*": ["*", "src/*"]
+    },
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "ES2018"
   }
 }
