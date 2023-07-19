@@ -36,6 +36,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/progress@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "@types/progress@npm:2.0.5"
+  dependencies:
+    "@types/node": "*"
+  checksum: 633427b875f782176456ceaf78bcdf47abf27bcf52385fa1acb545d0e6450f5638aa313ca600f25fb12bf094a003257b19b000d1072981d7be8a375c87e37a92
+  languageName: node
+  linkType: hard
+
 "@types/through@npm:*":
   version: 0.0.30
   resolution: "@types/through@npm:0.0.30"
@@ -99,11 +108,13 @@ __metadata:
     "@types/figlet": ^1.5.6
     "@types/inquirer": ^9.0.3
     "@types/node": ^20.4.2
+    "@types/progress": ^2.0.5
     args: ^5.0.3
     chalk: ^5.3.0
     commander: ^11.0.0
     figlet: ^1.6.0
     inquirer: ^9.2.8
+    progress: ^2.0.3
     typescript: ^5.1.6
   bin:
     autotail: dist/index.js
@@ -472,6 +483,13 @@ __metadata:
   version: 1.0.2
   resolution: "os-tmpdir@npm:1.0.2"
   checksum: 5666560f7b9f10182548bf7013883265be33620b1c1b4a4d405c25be2636f970c5488ff3e6c48de75b55d02bde037249fe5dbfbb4c0fb7714953d56aed062e6d
+  languageName: node
+  linkType: hard
+
+"progress@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "progress@npm:2.0.3"
+  checksum: f67403fe7b34912148d9252cb7481266a354bd99ce82c835f79070643bb3c6583d10dbcfda4d41e04bbc1d8437e9af0fb1e1f2135727878f5308682a579429b7
   languageName: node
   linkType: hard
 

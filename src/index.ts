@@ -3,7 +3,7 @@
 import inquirer from "inquirer"
 // import chalk from "chalk"
 
-import { detect } from "./scripts/detect.js"
+import { detect } from "./scripts/checks.js"
 import new_project from "./scripts/new_project.js"
 import existing_project from "./scripts/existing_project.js"
 import remove_from_project from "./scripts/remove_from_project.js"
@@ -72,6 +72,7 @@ async function init() {
           if (!detect.isDirty) {
             return true
           } else {
+            console.clear()
             console.log(
               chalk.bold.red("please commit your files then try again")
             )

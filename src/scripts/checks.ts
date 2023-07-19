@@ -16,6 +16,36 @@ const files = fs.readdirSync(curPath)
 const isPackageJson = files.includes("package.json")
 const isTypeScript = files.includes("tsconfig.json")
 const isGit = fs.existsSync(path.join(curPath, ".git"))
+// let framework: SupportedFrameworks= undefined
+
+const detectFramework = () => {
+  if (isPackageJson) {
+    const packageJson = JSON.parse(
+      fs.readFileSync(path.join(curPath, "package.json")).toString()
+    )
+
+    if (packageJson.dependencies) {
+      if (packageJson.dependencies.react && packageJson.dependencies.next) {
+        return "next"
+      }
+      if (packageJson.dependencies.react && !packageJson.dependencies.next) {
+        return "react"
+      }
+      if (packageJson.dependencies.vue) {
+        return "vue"
+      }
+      if (packageJson.dependencies.angular) {
+        return "angular"
+      }
+      if (packageJson.dependencies.svelte) {
+        return "svelte"
+      }
+    }
+  }
+  return "none"
+}
+
+const framework = detectFramework()
 
 // check if the directory has any uncommitted changes or untracked files
 const isDirty =
@@ -28,4 +58,6 @@ export const detect = {
   curPath,
   isGit,
   isDirty,
+  framework,
+  detectFramework,
 }
