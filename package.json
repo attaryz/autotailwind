@@ -1,33 +1,47 @@
 {
   "name": "autotail",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "cli tool to add tailwindcss to your project",
   "repository": {
     "type": "git",
     "url": "https://github.com/attaryz/autotailwind.git"
   },
-  "main": "dist/src/index.js",
-  "bin": {
-    "autotail": "./dist/src/index.js"
-  },
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "start": "node --experimental-specifier-resolution=node dist/src/index.js",
-    "build:i": "yarn build && npm i -g . && autotail"
+    "start": "node dist/index.js",
+    "build:i": "yarn build && npm i -g .",
+    "build:w": "npx tsc -w --preserveWatchOutput "
   },
-  "keywords": [],
+  "keywords": [
+    "tailwindcss",
+    "tailwind",
+    "css",
+    "cli",
+    "autotailwind",
+    "autotail"
+  ],
   "author": "Abdullah Ali",
   "license": "ISC",
   "dependencies": {
+    "@types/args": "^5.0.0",
     "@types/figlet": "^1.5.6",
     "@types/inquirer": "^9.0.3",
+    "@types/progress": "^2.0.5",
+    "args": "^5.0.3",
+    "chalk": "^5.3.0",
     "commander": "^11.0.0",
     "figlet": "^1.6.0",
-    "inquirer": "^9.2.8"
+    "inquirer": "^9.2.8",
+    "progress": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",
     "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
