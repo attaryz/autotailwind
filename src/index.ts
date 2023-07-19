@@ -23,24 +23,24 @@ async function init() {
         name: "type",
         message: "What do you want to do?",
         choices: [
-          "Create a new project",
+          // "Create a new project",
           "Add tailwind to an existing project",
-          "Remove tailwind from a project",
+          // "Remove tailwind from a project",
           "Exit",
         ],
       },
-      {
-        type: "input",
-        name: "name",
-        message: "What is the name of your project?",
-        when: (answers) => answers.type === "Create a new project",
-      },
-      {
-        type: "input",
-        name: "path",
-        message: "Where do you want to create your project?",
-        when: (answers) => answers.type === "Create a new project",
-      },
+      // {
+      //   type: "input",
+      //   name: "name",
+      //   message: "What is the name of your project?",
+      //   when: (answers) => answers.type === "Create a new project",
+      // },
+      // {
+      //   type: "input",
+      //   name: "path",
+      //   message: "Where do you want to create your project?",
+      //   when: (answers) => answers.type === "Create a new project",
+      // },
       {
         type: "input",
         name: "path",
@@ -54,21 +54,21 @@ async function init() {
           } else if (!detect.isDirty()) {
             console.clear()
             console.log(
-              chalk.bold.red("please commit your files then try again")
+              chalk.bold.red("please commit your files and try again")
             )
             process.exit(0)
           }
           return true
         },
       },
-      {
-        type: "list",
-        name: "language",
-        message: "Where is your project?",
-        choices: ["TypeScript", "JavaScript"],
-        when: (answers) =>
-          answers.type === "Add tailwind to an existing project",
-      },
+      // {
+      //   type: "list",
+      //   name: "language",
+      //   message: "Where is your project?",
+      //   choices: ["TypeScript", "JavaScript"],
+      //   when: (answers) =>
+      //     answers.type === "Add tailwind to an existing project",
+      // },
       {
         type: "input",
         name: "path",
@@ -77,12 +77,13 @@ async function init() {
       },
     ])
     .then((answers) => {
-      if (answers.type === "Create a new project") {
-        new_project(answers)
-      } else if (answers.type === "Add tailwind to an existing project") {
+      // if (answers.type === "Create a new project") {
+      // new_project(answers)
+      // } else
+      if (answers.type === "Add tailwind to an existing project") {
         existing_project(answers)
-      } else if (answers.type === "Remove tailwind from a project") {
-        remove_from_project(answers)
+        // } else if (answers.type === "Remove tailwind from a project") {
+        //   remove_from_project(answers)
       } else {
         process.exit()
       }

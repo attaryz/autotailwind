@@ -15,3 +15,11 @@ npm install -g autotail
 ```bash
 autotail
 ```
+
+### todos
+
+- [ ] execute commands based on the package manager (npm, yarn, pnpm)
+- [ ] add css based on "src" or "app" for nextjs
+- [ ] vuejs support
+- [ ] svelte support
+- [ ] sveltekit support

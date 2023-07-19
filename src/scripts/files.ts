@@ -1,6 +1,6 @@
 import { SupportedFrameworks } from "@/types"
 import { exec } from "child_process"
-import fs from "fs"
+import fs, { appendFile } from "fs"
 import { frameworksMeta } from "./deps.js"
 
 function createDir(dir: string) {
@@ -45,6 +45,49 @@ function createOrAdd(file: string, content: string) {
   }
 }
 
+function writeFileSyncRecursive(
+  file: string,
+  content: string,
+  charset: string
+) {
+  // -- normalize path separator to '/' instead of path.sep,
+  // -- as / works in node for Windows as well, and mixed \\ and / can appear in the path
+  let filepath = file.replace(/\\/g, "/")
+
+  // -- preparation to allow absolute paths as well
+  let root = ""
+  if (filepath[0] === "/") {
+    root = "/"
+    filepath = filepath.slice(1)
+  } else if (filepath[1] === ":") {
+    root = filepath.slice(0, 3) // c:\
+    filepath = filepath.slice(3)
+  }
+
+  // -- create folders all the way down
+  const folders = filepath.split("/").slice(0, -1) // remove last item, file
+  folders.reduce(
+    (acc, folder) => {
+      const folderPath = acc + folder + "/"
+      if (!fs.existsSync(folderPath)) {
+        fs.mkdirSync(folderPath)
+      }
+      return folderPath
+    },
+    root // first 'acc', important
+  )
+
+  // add content to the top of the file
+  const writeContent = () => {
+    appendFile(file, content, (err) => {
+      if (err) throw err
+    })
+  }
+
+  // -- write file
+  writeContent()
+}
+
 interface TailwindConfig {
   projectFolder: string
   lang: string
@@ -83,7 +126,8 @@ const createCss = (framework: SupportedFrameworks, path: string) => {
 
   framework === "react" && createFile(path + "/styles.css", cssFileContent)
   framework === "next" && createFile(path + "/globals.css", cssFileContent)
-  framework === "vue" && createOrAdd(path + "/assets/main.css", cssFileContent)
+  framework === "vue" &&
+    writeFileSyncRecursive(path + "/assets/main.css", cssFileContent, "utf8")
 }
 
 export {
