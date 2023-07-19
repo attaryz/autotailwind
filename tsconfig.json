@@ -1,29 +1,48 @@
+// {
+//   "include": ["src/**/*", "package.json"],
+//   "compilerOptions": {
+//     "baseUrl": "./src",
+//     "composite": true,
+//     "declaration": true,
+//     "declarationMap": true,
+//     "esModuleInterop": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "importHelpers": true,
+//     // "module": "CommonJS",
+//     "moduleResolution": "node",
+//     "newLine": "LF",
+//     "noFallthroughCasesInSwitch": true,
+//     "noImplicitReturns": true,
+//     "noUncheckedIndexedAccess": true,
+//     "noUnusedLocals": false,
+//     "noUnusedParameters": false,
+//     "outDir": "dist",
+//     "paths": {
+//       "@/*": ["*", "src/*"]
+//     },
+//     "preserveConstEnums": true,
+//     "removeComments": true,
+//     "resolveJsonModule": true,
+//     "strict": true,
+//     "target": "ES2018"
+//   }
+// }
+
 {
-  "include": ["src/**/*", "package.json"],
   "compilerOptions": {
-    "baseUrl": "./src",
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true,
+    "module": "ESNext",
+    "target": "ES2019",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    // "module": "CommonJS",
     "moduleResolution": "node",
-    "newLine": "LF",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "outDir": "dist",
-    "paths": {
-      "@/*": ["*", "src/*"]
-    },
-    "preserveConstEnums": true,
-    "removeComments": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "ES2018"
-  }
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist"
+    // "": ["package.json"]
+  },
+  "exclude": ["node_modules", "dist"]
 }
