@@ -4,41 +4,50 @@ type FrameworksMeta = {
   [key in SupportedFrameworks]: {
     dependencies: string[]
     devDependencies: string[]
-    files: string[]
+    files: {
+      files: string[]
+      path: string
+    }
+    config?: {
+      content?: string[]
+    }
   }
 }
 
 const commonDevDependencies = ["tailwindcss", "autoprefixer", "postcss"]
 
-export const frameworksMeta: Omit<FrameworksMeta, "none"> = {
+export const frameworksMeta: FrameworksMeta = {
   react: {
     dependencies: [],
     devDependencies: commonDevDependencies,
-    files: ["tailwind.config.js", "postcss.config.js"],
+    files: {
+      files: ["tailwind.config.js", "postcss.config.js"],
+      path: "",
+    },
+    config: {
+      content: [".html", ".{js,jsx,ts,tsx}"],
+    },
   },
   next: {
     dependencies: [],
     devDependencies: commonDevDependencies,
-    files: ["tailwind.config.js", "postcss.config.js"],
-  },
-  angular: {
-    dependencies: [],
-    devDependencies: [],
-    files: ["tailwind.config.js", "postcss.config.js"],
-  },
-  nuxt: {
-    dependencies: [],
-    devDependencies: [],
-    files: [],
-  },
-  svelte: {
-    dependencies: [],
-    devDependencies: [],
-    files: [],
+    files: {
+      files: ["tailwind.config.js", "postcss.config.js"],
+      path: "",
+    },
+    config: {
+      content: [".html", ".{js,jsx,ts,tsx}"],
+    },
   },
   vue: {
     dependencies: [],
-    devDependencies: [],
-    files: [],
+    devDependencies: commonDevDependencies,
+    files: {
+      files: ["tailwind.config.js", "postcss.config.js"],
+      path: "",
+    },
+    config: {
+      content: [".html", ".{vue,js,jsx,ts,tsx}"],
+    },
   },
 }

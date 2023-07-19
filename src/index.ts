@@ -10,31 +10,11 @@ import remove_from_project from "./scripts/remove_from_project.js"
 import chalk from "chalk"
 
 interface App {}
-// const program = new Command()
-
-// program
-//   .version("0.0.1")
-//   .description("Automatically add tailwind to your project")
-//   .option("-l, --ls  [value]", "List directory contents")
-//   .option("-m, --mkdir <value>", "Create a directory")
-//   .option("-t, --touch <value>", "Create a file")
-//   .parse(process.argv)
-
-// const options = program.opts()
-
-//
-
-// console.log(figlet.textSync("dd"))
-
-// const log = console.log
-
-// const errorLog = (message: string) => log(chalk.bold.red())
-// const successLog = (message: string) => log(chalk.bold.green())
 
 async function init() {
   console.clear()
 
-  console.log(detect)
+  // console.log(detect)
 
   await inquirer
     .prompt([
@@ -69,24 +49,17 @@ async function init() {
           answers.type === "Add tailwind to an existing project",
 
         validate: () => {
-          if (!detect.isDirty) {
+          if (!detect.isGit()) {
             return true
-          } else {
+          } else if (!detect.isDirty()) {
             console.clear()
             console.log(
               chalk.bold.red("please commit your files then try again")
             )
             process.exit(0)
           }
+          return true
         },
-
-        // validate: (value) => {
-        //   if (fs.existsSync(path.join(value, "package.json"))) {
-        //     return true
-        //   } else {
-        //     return "Please enter a valid path"
-        //   }
-        // },
       },
       {
         type: "list",

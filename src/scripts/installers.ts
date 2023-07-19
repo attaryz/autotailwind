@@ -2,43 +2,57 @@ import { SupportedFrameworks } from "@/types"
 import path from "path"
 import { detect } from "./checks.js"
 import { frameworksMeta } from "./deps.js"
-import { createDir, createFile, execute } from "./files.js"
-import ProgressBar from "progress"
+import {
+  createDir,
+  createFile,
+  execute,
+  copyFile,
+  createTailwindConfig,
+  createCss,
+} from "./files.js"
 
 const { curPath } = detect
 
-const bar = new ProgressBar("  downloading [:bar] :rate/bps :percent :etas", {
-  complete: "=",
-  incomplete: " ",
-  width: 20,
-  total: 100,
-})
-
-export const install = async (framework: SupportedFrameworks) => {
-  if (framework === "none") {
+export const install = async (framework: SupportedFrameworks, path: string) => {
+  if (framework === undefined) {
     console.error("No supported framework detected")
-    return
+    console.log("Please run the command in the root of your project")
+    console.log(
+      "or visit the tailwind documentation https://tailwindcss.com/docs/installation"
+    )
+    process.exit(1)
   }
 
   const { dependencies, devDependencies, files } = frameworksMeta[framework]
 
   console.log(dependencies, devDependencies, files, "meta")
   // create tailwind.config.js
-  createFile(path.join(curPath, "tailwind.config.js"))
+  //   createFile(path.join(curPath, "tailwind.config.js"))
 
-  // create postcss.config.js
-  createFile(path.join(curPath, "postcss.config.js"))
+  //   copyFile(
+  //     path.join(curPath, "tailwind.config.js"),
+  //     path.join(curPath, "tailwind.config.js")
+  //   )
 
-  // create src/styles.css
-  createDir(path.join(curPath, "src"))
-  createFile(path.join(curPath, "src/styles.css"))
+  //   // create postcss.config.js
+  //   createFile(path.join(curPath, "postcss.config.js"))
 
-  // create tailwind.css
-  createFile(path.join(curPath, "src/tailwind.css"))
+  //   // create src/styles.css
+  //   createDir(path.join(curPath, "src"))
+  //   createFile(path.join(curPath, "src/styles.css"))
 
-  // install dependencies and devDependencies
-  // display progress bar
+  //   // create tailwind.css
+  //   createFile(path.join(curPath, "src/tailwind.css"))
 
+  createTailwindConfig({
+    lang: "js",
+    framework,
+    variants: [],
+    plugins: [],
+    projectFolder: path,
+  })
+
+  createCss(framework, path)
   // install dependencies
   console.log("installing dependencies ...")
   dependencies.length > 0 &&
